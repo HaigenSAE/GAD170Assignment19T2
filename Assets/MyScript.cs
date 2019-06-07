@@ -4,50 +4,80 @@ using UnityEngine;
 
 public class MyScript : MonoBehaviour
 {
-    public int fruit;
-    public int apples;
-    public int bananas;
+
+    public int playerLives = 3;
+
+    public int classSize = 25;
+
+    public bool classCounted;
+
 
     void Start()
     {
-
+        //HelloWorld();
+        ModifyLives(-2);
+        DisplayName("Jake", "Thomas");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        fruit += 3 - bananas;
-        apples += 2;
-        //Debug.Log("There is " + fruit + " fruit");
-        //Debug.Log("There are " + apples + " apples");
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //very simple coin toss
+            //1 is winner
+            
+            //if(Random.Range(successCalc,100) > 75)
 
-        //If our fruit exceeds 100
-        if (fruit > 100)
-        {
-            Debug.Log("Greater than 100");
+            if(Random.Range(1,7) > 4)
+            {
+                HelloWorld();
+                ModifyLives(2);
+                Debug.Log("Won the coin toss");
+            }
+            else
+            {
+                Debug.Log("Lost the coin toss");
+                ModifyLives(-2);
+            }
         }
-        else
+
+        if(!classCounted)
         {
-            Debug.Log("Less than 100");
+            for(int i = 1; i < classSize; i++)
+            {
+                Debug.Log(i);
+            }
+            classCounted = true;
         }
+        
+        
+
+
+
+
+
+
+
+
     }
+
+    void HelloWorld()
+    {
+        Debug.Log("Hello World");
+    }
+
+    void ModifyLives(int incLives)
+    {
+        playerLives += incLives;
+        //Debug.Log(incLives);
+    }
+
+    void DisplayName(string firstName, string lastName)
+    {
+        Debug.Log(firstName + " " + lastName);
+    }
+
+
+
 }
 
-
-
-
-//Player script (i.e. named something like PlayerScript.cs
-
-//Variables for stats, start with Health
-//Add things like Strength, Speed, Defense, Luck
-/*
-
-    Level Up {
-    Strength++; or Strength += 1; or Strength = Strength + 1;
-    Strength--;
-
-    Strength = Level*10;
-    //Only increase Speed stat, every second level
-
-}
-*/
