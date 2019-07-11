@@ -7,7 +7,9 @@ public class MyScript : MonoBehaviour
 
     public int playerLives = 3;
 
-    public int classSize = 25;
+    public int attendanceRate;
+    public int attending = 8;
+    public int classSize = 12;
 
     public bool classCounted;
 
@@ -17,6 +19,9 @@ public class MyScript : MonoBehaviour
         //HelloWorld();
         ModifyLives(-2);
         DisplayName("Jake", "Thomas");
+        attendanceRate = Mathf.RoundToInt((float)attending / (float)classSize * 100);
+        
+        Debug.Log("Attendance %: " + attendanceRate);
     }
 
     void Update()
@@ -49,16 +54,6 @@ public class MyScript : MonoBehaviour
             }
             classCounted = true;
         }
-        
-        
-
-
-
-
-
-
-
-
     }
 
     void HelloWorld()
