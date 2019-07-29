@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public Stats myStats;
 
-    private GameObject GameManager;
+    private GameObject BattleManager;
 
     public enum EnemyTypes
     {
@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        //Find our GameManager
-        GameManager = GameObject.FindGameObjectWithTag("GameManager");
+        //Find our BattleManager
+        BattleManager = GameObject.FindGameObjectWithTag("BattleManager");
         myStats = GetComponent<Stats>();
         switch (myType)
         {
@@ -39,6 +39,6 @@ public class Enemy : MonoBehaviour
 
     public void Defeated()
     {
-        GameManager.GetComponent<GameManager>().RemoveEnemy(gameObject);
+        BattleManager.GetComponent<BattleManager>().RemoveEnemy(gameObject);
     }
 }
